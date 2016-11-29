@@ -35,4 +35,14 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function getNameAttribute($value)
+    {
+        return "User: ".strtoupper($value);
+    }
+
+    public function getEmailAttribute($value)
+    {
+        return strtok($value, '@');
+    }
 }
