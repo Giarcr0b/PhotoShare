@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.welcome_master')
+
+@section('title')
+    Register
+@endsection
 
 @section('content')
 <div class="container">
@@ -7,7 +11,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -19,6 +23,52 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">User Name</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('user_type') ? ' has-error' : '' }}">
+                            <label for="user_type" class="col-md-4 control-label">Type of User</label>
+
+                            <div class="col-md-6">
+                                <select id="user_type" type="text" class="form-control" name="user_type" value="{{ old('user_type') }}" required autofocus list="user_type">
+
+                                    <option value="Photographer">Photographer</option>
+                                    <option value="Shopper">Shopper</option>
+                                </select>
+
+                                @if ($errors->has('user_type'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('user_type') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('profile_pic') ? ' has-error' : '' }}">
+                            <label for="profile_pic" class="col-md-4 control-label">Profile Picture</label>
+
+                            <div class="col-md-6">
+                                <input id="profile_pic" type="file" class="form-control" name="profile_pic" value="{{ old('profile_pic') }}" required autofocus>
+
+                                @if ($errors->has('profile_pic'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('profile_pic') }}</strong>
                                     </span>
                                 @endif
                             </div>

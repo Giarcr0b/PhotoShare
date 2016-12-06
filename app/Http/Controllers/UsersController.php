@@ -9,14 +9,8 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = [
-            '0' => ['first_name' => 'Craig',
-                'last_name' => 'Robertson',
-                'location' => 'Lumsden'],
-            '1' => ['first_name' => 'Laura',
-                'last_name' => 'Bunyan',
-                'location' => 'Blackford']
-        ];
+        $users = User::paginate(10);
+
         return view('admin.users.index', compact('users'));
     }
 

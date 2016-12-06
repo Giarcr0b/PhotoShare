@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use View;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -19,15 +20,28 @@ class PagesController extends Controller
             return 'No view Available';
     }
 
-    public function profile()
+    public function profile($id)
     {
-        return view('pages.profile');
+
+$user = User::where('id', $id)->get();
+        return view('pages.profile', compact('user'));
     }
 
     public function blade()
     {
         $gender = 'feugjgmale';
-        $text = 'Hello World!';
-        return view('blade.bladetest', compact('gender', 'text'));
+        return view('blade.bladetest', compact('gender'));
+    }
+
+    public function photographer()
+    {
+
+        $photographers = User::where('user_type', 'photographer')->paginate(6);
+        return view('pages.photographer', compact('photographers'));
+    }
+
+    public function search ()
+    {
+        return view('pages.search');
     }
 }

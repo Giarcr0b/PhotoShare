@@ -6,6 +6,7 @@ use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Request;
 
 class RegisterController extends Controller
 {
@@ -50,6 +51,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:25|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -62,10 +64,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $file = Request::file('profile_pic');
+        $random_name = str_random(8);
+        $destinationPath = 'profile/';
+        $extension = $file->getClientOriginalExtension();
+        $filename=$random_name.'_profile.'.$extension;
+        $uploadSuccess = Request::file('profile_pic')
+            ->move($destinationPath, $filename);
+
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => $data['password'],
+            'user_type' => $data['user_type'],
+            'profile_pic' => $filename
+
         ]);
     }
 }

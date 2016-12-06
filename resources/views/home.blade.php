@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.logedon_master')
+
+@section('title')
+    Home
+@endsection
 
 @section('content')
 <div class="container">
@@ -8,10 +12,10 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    <h1>Hello, {{ $myName }}</h1>
-                    <h3>{{ $age }}</h3>
+                    <h1></h1>
+                    <h3></h3>
                     {{ $auth->email }}
-                    You are logged in {!! Auth::user()->email !!}!
+
                 </div>
             </div>
         </div>
