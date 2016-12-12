@@ -6,38 +6,30 @@
 
 @section('content')
     <div class="jumbotron">
-        <h1>
-            Your Gender is
-
-        </h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus
-            commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        <h2>
+            Welcome to Photo Share
+        </h2>
+        <p class="lead">A photography sharing site for photographers and buyers of photographs. Feel free to browse our
+            site or click the link below to register an account with us.</p>
+        <p><a class="btn btn-lg btn-success" href="{{ url('/register') }}" role="button">Join us Today</a></p>
     </div>
 
     <div class="row marketing">
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>1Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+        @for($i = 0; $i < 6; $i++)
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
 
-            <h4>Subheading</h4>
-            <p>2Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
+                        <a href="#">
+                            <img class="img-thumbnail"
+                                 src="/profile/default.jpg"
+                                 alt="Profile pic">
+                        </a>
+                        <h4>Photo: {{ $i }}</h4>
+                    </div>
+                </div>
+            </div>
 
-            <h4>Subheading</h4>
-            <p>3Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
-
-        <div class="col-lg-6">
-            <h4>Subheading</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-            <h4>Subheading</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet
-                fermentum.</p>
-
-            <h4>Subheading</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-        </div>
+        @endfor
     </div>
 @endsection

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('bio')->default('About you...');
             $table->string('profile_pic')->default('default.jpg');
             $table->enum('user_type', ['Admin', 'Photographer', 'Shopper'])->default('Photographer');
-            $table->enum('chat_accesss', ['yes', 'no'])->default('no');
+            $table->enum('chat_access', ['yes', 'no'])->default('no');
             $table->enum('authorised', ['yes', 'no'])->default('no');
             $table->string('password');
             $table->rememberToken();

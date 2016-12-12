@@ -7,46 +7,51 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h2>Photographer: User Name</h2></div>
+                    <div class="panel-heading"><h2>Photographer: {{ $user->name }}</h2></div>
 
                     <div class="panel-body text-center">
-                         <img class="img-circle img-thumbnail"
-                             src="/profile/default.jpg"
-                             alt="Profile pic">
-                        <h3>Name: Name</h3>
-                        <h3>Email: email</h3>
-                        <p>Bio: </p>
-                        <p>bio</p>
+                        <img class="img-circle img-thumbnail"
+                             src="/profile/{{ $user->profile_pic }}"
+                             alt="Profile pic"
+                             height="250"
+                             width="250">
+                        <h3 class="text-left">Name: {{ $user->name }}</h3>
+                        <h3 class="text-left">Email: {{ $user->email }}</h3>
+                        <div class="panel panel-default text-left">
+                            <h3>Bio: </h3>
+                            <p>{{ $user->bio }}</p>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading"><h2>Albums</h2></div>
 
             <div class="panel-body text-center">
                 <div class="row marketing">
-                    @for($i = 0; $i < 6; $i++)
+                    @foreach($albums as $album)
                         <div class="col-lg-4">
                             <div class="panel panel-default">
                                 <div class="panel-body text-center">
 
-                                    <a href="#">
+                                    <a href="{{ url('/pages/album', array('id'=>$album->id)) }}">
                                         <img class="img-thumbnail img-circle"
-                                             src="/profile/default.jpg"
+                                             src="/albums/{{ $album->cover_image }}"
                                              alt="Profile pic">
                                     </a>
-                                    <h4>Album{{ $i }}</h4>
+                                    <h4>Album: {{ $album->name }}</h4>
                                 </div>
                             </div>
                         </div>
 
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>

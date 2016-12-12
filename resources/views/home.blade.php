@@ -5,20 +5,18 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+    <div class="container">
+        <div class="col-lg-10 col-lg-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Members Area</div>
 
-                <div class="panel-body">
-                    <h1></h1>
-                    <h3></h3>
-                    {{ $auth->email }}
+                <div class="panel-body" align="center">
+                    <h1>Welcome</h1>
+                    <h3>{{ $auth->name }}</h3>
+
 
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

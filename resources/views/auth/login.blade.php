@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
+                            <div class="col-md-8 col-md-offset-2">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember"> Remember Me
@@ -53,7 +53,12 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                            <div class="col-md-10 col-md-offset-2">
+
+                                <button  type="button" class="btn" >
+                                   <a href="{{ url('/') }}">Cancel</a>
+                                </button>
+
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
