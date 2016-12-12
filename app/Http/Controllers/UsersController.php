@@ -113,10 +113,10 @@ class UsersController extends Controller
     {
         // ban Photographer from chat
         $user = User::findOrFail($id);
-        if ($user->chat_accesss == 'yes') {
-            $user->chat_accesss = 'no';
+        if ($user->chat_access == 'yes') {
+            $user->chat_access = 'no';
         } else {
-            $user->chat_accesss = 'yes';
+            $user->chat_access = 'yes';
         }
 
         $user->save();
